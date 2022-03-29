@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -21,10 +20,6 @@ public class PackfordEmployee implements Serializable {
 	private int packfordEmployeeId;
 
 	private String address;
-
-	@Temporal(TemporalType.DATE)
-	@Column(name="date_of_join")
-	private Date dateOfJoin;
 
 	private String email;
 
@@ -64,14 +59,6 @@ public class PackfordEmployee implements Serializable {
 		this.address = address;
 	}
 
-	public Date getDateOfJoin() {
-		return this.dateOfJoin;
-	}
-
-	public void setDateOfJoin(Date dateOfJoin) {
-		this.dateOfJoin = dateOfJoin;
-	}
-
 	public String getEmail() {
 		return this.email;
 	}
@@ -107,6 +94,7 @@ public class PackfordEmployee implements Serializable {
 	public PackfordEmployeeDepartment getPackfordEmployeeDepartment() {
 		return this.packfordEmployeeDepartment;
 	}
+	
 
 	public void setPackfordEmployeeDepartment(PackfordEmployeeDepartment packfordEmployeeDepartment) {
 		this.packfordEmployeeDepartment = packfordEmployeeDepartment;

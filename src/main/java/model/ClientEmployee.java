@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -16,8 +17,8 @@ public class ClientEmployee implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="`client_employee-id`")
-	private int clientEmployee_id;
+	@Column(name="client_employee_id")
+	private int clientEmployeeId;
 
 	private String address;
 
@@ -45,15 +46,19 @@ public class ClientEmployee implements Serializable {
 	@JoinColumn(name="client_department_id")
 	private ClientDepartment clientDepartment;
 
+	//bi-directional many-to-one association to RequestDetail1
+	@OneToMany(mappedBy="clientEmployee")
+	private List<RequestDetail1> requestDetail1s;
+
 	public ClientEmployee() {
 	}
 
-	public int getClientEmployee_id() {
-		return this.clientEmployee_id;
+	public int getClientEmployeeId() {
+		return this.clientEmployeeId;
 	}
 
-	public void setClientEmployee_id(int clientEmployee_id) {
-		this.clientEmployee_id = clientEmployee_id;
+	public void setClientEmployeeId(int clientEmployeeId) {
+		this.clientEmployeeId = clientEmployeeId;
 	}
 
 	public String getAddress() {
@@ -118,6 +123,28 @@ public class ClientEmployee implements Serializable {
 
 	public void setClientDepartment(ClientDepartment clientDepartment) {
 		this.clientDepartment = clientDepartment;
+	}
+
+	public List<RequestDetail1> getRequestDetail1s() {
+		return this.requestDetail1s;
+	}
+
+	public void setRequestDetail1s(List<RequestDetail1> requestDetail1s) {
+		this.requestDetail1s = requestDetail1s;
+	}
+
+	public RequestDetail1 addRequestDetail1(RequestDetail1 requestDetail1) {
+		getRequestDetail1s().add(requestDetail1);
+		requestDetail1.setClientEmployee(this);
+
+		return requestDetail1;
+	}
+
+	public RequestDetail1 removeRequestDetail1(RequestDetail1 requestDetail1) {
+		getRequestDetail1s().remove(requestDetail1);
+		requestDetail1.setClientEmployee(null);
+
+		return requestDetail1;
 	}
 
 }

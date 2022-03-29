@@ -8,10 +8,12 @@
 </head>
 <body>
 
+	<h2>Add a Client</h2>
+	<br/>
 	<form method = "GET">
 		Client Name: <input type = "text" name = "clientName"><br/><br/>
-		Origin: <input type = "text" name = "clientOrigin"><br/>
-		<br/>
+		Origin: <input type = "text" name = "clientOrigin"><br/><br/>
+		
 		<input type = "submit" value = "Add" />
 	</form>
 	

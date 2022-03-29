@@ -14,18 +14,21 @@
 <title>Add Packford's Employee</title>
 </head>
 <body>
-
-	<form method = "GET">
+	
+	
+	<h2>Add a Packford's Employee</h2>
+	<br/>
+	<form action="addPackfordEmployee.jsp" method = "GET">
 		
 		Select Department:&nbsp; <select name="cbxDepartment" style="width: 200px">
 			<c:forEach items="${PackfordEmployeeDepartmentlist}" var="department">
-				<option value="${department.id}">${department.name}</option>
+				<option value="${department.packfordEmployeeDepartmentId}">${department.departmentName}</option>
 			</c:forEach>
 		</select>
 		<br/><br/>
 		Select Warehouse:&nbsp; <select name="cbxWarehouse" style="width: 200px">
 			<c:forEach items="${Warehouselist}" var="warehouse">
-				<option value="${warehouse.id}">${warehouse.name}</option>
+				<option value="${warehouse.warehouseId}">${warehouse.warehouseLocation}</option>
 			</c:forEach>
 		</select>
 		<br/><br/>
@@ -39,8 +42,7 @@
 		<input type = "submit" value = "Add" />
 	</form>
 	<%
-		if (request.getParameter("cbxDepartment") != null) {
-	
+		if (request.getParameter("cbxDepartment") != null && request.getParameter("cbxWarehouse") != null && request.getParameter("employeeName") != null) {
 			response.sendRedirect("PackfordServlet?action=addPackfordEmployeewithdetails" + "&deparmentID=" + 
 									request.getParameter("cbxDepartment") + 
 									"&warehouseID=" + request.getParameter("cbxWarehouse") +
@@ -58,6 +60,7 @@
 	List<Warehouse>Warehouselist = (List<Warehouse>) session.getAttribute("Warehouselist");
 	
 	%>
+
 
 </body>
 </html>

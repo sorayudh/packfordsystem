@@ -21,9 +21,6 @@ public class RequestDetail1 implements Serializable {
 	@Column(name="request1_id")
 	private int request1Id;
 
-	@Column(name="client_employee_id")
-	private int clientEmployeeId;
-
 	@Column(name="file_request")
 	private byte fileRequest;
 
@@ -68,6 +65,11 @@ public class RequestDetail1 implements Serializable {
 	@JoinColumn(name="client_branch_id")
 	private ClientBranch clientBranch;
 
+	//bi-directional many-to-one association to ClientEmployee
+	@ManyToOne
+	@JoinColumn(name="client_employee_id")
+	private ClientEmployee clientEmployee;
+
 	//bi-directional many-to-one association to Crate
 	@ManyToOne
 	@JoinColumn(name="crate_id")
@@ -87,14 +89,6 @@ public class RequestDetail1 implements Serializable {
 
 	public void setRequest1Id(int request1Id) {
 		this.request1Id = request1Id;
-	}
-
-	public int getClientEmployeeId() {
-		return this.clientEmployeeId;
-	}
-
-	public void setClientEmployeeId(int clientEmployeeId) {
-		this.clientEmployeeId = clientEmployeeId;
 	}
 
 	public byte getFileRequest() {
@@ -233,6 +227,14 @@ public class RequestDetail1 implements Serializable {
 
 	public void setClientBranch(ClientBranch clientBranch) {
 		this.clientBranch = clientBranch;
+	}
+
+	public ClientEmployee getClientEmployee() {
+		return this.clientEmployee;
+	}
+
+	public void setClientEmployee(ClientEmployee clientEmployee) {
+		this.clientEmployee = clientEmployee;
 	}
 
 	public Crate getCrate() {

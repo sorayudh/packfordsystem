@@ -9,7 +9,7 @@
 <body>
 
 <div>
-	<h1>User Login</h1>
+	<h2>User Login</h2>
 </div>
 <form  action="home.jsp" method = "post">
 	<table>
